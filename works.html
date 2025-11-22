@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معرض الأعمال</title>
+  <style>
+    :root {
+      --bg: #050509;
+      --surface: #111119;
+      --surface-soft: #181824;
+      --accent: #f5c750;
+      --accent-soft: rgba(245, 199, 80, 0.16);
+      --text-main: #f7f7ff;
+      --text-muted: #a0a3b5;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --radius-lg: 20px;
+      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.85);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans Arabic", sans-serif;
+      background: radial-gradient(circle at top, #191a33 0, #050509 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .card {
+      max-width: 520px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .pill {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .soon {
+      font-size: 28px;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .btn-back {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+      color: var(--text-main);
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .btn-back:hover {
+      border-color: var(--accent-soft);
+    }
+    .en-note {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+  
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: flex-start;
+      justify-items: center;
+      margin: 24px auto 40px;
+    }
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    figure.item {
+      background: #111119;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      max-width: 230px;
+      width: 100%;
+      justify-self: center;
+      margin: 0;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+    }
+    figure.item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+    figure.item figcaption {
+      padding: 8px 10px 10px;
+      background: linear-gradient(to bottom, rgba(5,5,9,0.8), #050509);
+    }
+
+  </style>
+
+<style>
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+figure.item {
+  background: #111119;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 230px;
+  width: 100%;
+  justify-self: center;
+  margin: 0;
+}
+figure.item img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: flex-start;
+      justify-items: center;
+      margin: 24px auto 40px;
+    }
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    figure.item {
+      background: #111119;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      max-width: 230px;
+      width: 100%;
+      justify-self: center;
+      margin: 0;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+    }
+    figure.item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+    figure.item figcaption {
+      padding: 8px 10px 10px;
+      background: linear-gradient(to bottom, rgba(5,5,9,0.8), #050509);
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="gallery" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;"><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img10.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img11.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img12.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img13.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img14.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img15.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img16.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img17.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img18.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img19.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img2.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img20.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img21.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img22.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img24.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img25.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img30.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img32.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img33.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img34.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img36.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img41.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img42.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img43.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img44.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img45.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img46.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img54.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img55.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img57.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img59.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img62.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img67.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img68.jpeg" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img7.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img8.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure><figure class="item" data-title="مجسم مطبوع ثلاثي الأبعاد" data-desc="تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.">
+        <img src="images/img9.JPG" alt="مجسم مطبوع ثلاثي الأبعاد" />
+        <figcaption>
+          <div class="work-title">مجسم مطبوع ثلاثي الأبعاد</div>
+          <div class="work-meta">تصميم مطبوع بخامة PLA وتشطيب عالي الجودة.</div>
+        </figcaption>
+      </figure></div>
+</body>
+</html>

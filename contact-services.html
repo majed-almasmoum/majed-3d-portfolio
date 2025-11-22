@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التواصل والخدمات · Coming Soon</title>
+  <style>
+    :root {
+      --bg: #050509;
+      --surface: #111119;
+      --surface-soft: #181824;
+      --accent: #f5c750;
+      --accent-soft: rgba(245, 199, 80, 0.16);
+      --text-main: #f7f7ff;
+      --text-muted: #a0a3b5;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --radius-lg: 20px;
+      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.85);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans Arabic", sans-serif;
+      background: radial-gradient(circle at top, #191a33 0, #050509 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      max-width: 520px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40px auto auto -40px;
+      width: 220px;
+      height: 220px;
+      background-image: url("logo.PNG");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .soon {
+      font-size: 28px;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-back {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+      color: var(--text-main);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      border-color: var(--accent-soft);
+    }
+
+    .en-note {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow">CONTACT & SERVICES</div>
+    <h1>صفحة التواصل والخدمات</h1>
+    <div class="pill">Soon · قريباً</div>
+    <div class="soon">قريباً</div>
+    <p>
+      سيتم قريباً إطلاق صفحة مخصصة لعرض تفاصيل الخدمات، آلية الطلب، التسعير التقريبي،
+      وطريقة متابعة حالة الطلبات بشكل أوضح وأسهل.
+    </p>
+    <p>
+      حالياً يمكنك استخدام وسائل التواصل الموجودة في الصفحة الرئيسية للتواصل معي مباشرة
+      بخصوص أي استفسار أو طلب طباعة ثلاثية الأبعاد.
+    </p>
+    <p class="en-note">
+      A dedicated contact & services page is coming soon.  
+      For now, please use the links on the main page to reach out.
+    </p>
+    <a class="btn-back" href="index.html">⬅ العودة إلى الصفحة الرئيسية</a>
+  </div>
+</body>
+</html>
