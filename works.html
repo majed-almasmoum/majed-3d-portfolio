@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الأعمال</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0d0f1a;font-family:'Cairo',sans-serif;color:white;}
+.global-header{
+ width:100%;padding:14px 40px;background:rgba(10,10,18,0.65);
+ backdrop-filter:blur(10px);display:flex;justify-content:space-between;
+ align-items:center;position:sticky;top:0;z-index:99;
+ border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.global-header img{height:60px;}
+.global-header nav a{
+ color:white;text-decoration:none;margin-left:22px;
+ font-size:17px;font-weight:600;opacity:.85;transition:.2s;
+}
+.global-header nav a:hover{opacity:1}
+.fade{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fade.show{opacity:1;transform:none}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})
+ })
+ document.querySelectorAll(".fade").forEach(el=>obs.observe(el))
+})
+</script>
+
+<style>
+.page{max-width:1200px;margin:50px auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.card{background:#11131f;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 0 10px #0006;transition:.3s}
+.card:hover{transform:scale(1.03)}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.card p{text-align:center;padding:10px;color:#ddd}
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;display:none;justify-content:center;align-items:center;z-index:200}
+.lightbox img{max-width:90%;max-height:90%;border-radius:12px}
+</style>
+<script>
+function openLightbox(src){document.getElementById("lb-img").src=src;document.getElementById("lb").style.display="flex"}
+function closeLightbox(){document.getElementById("lb").style.display="none"}
+</script>
+</head>
+<body>
+
+<header class="global-header">
+  <img src="logo.PNG" alt="Logo">
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="works.html">الأعمال</a>
+    <a href="contact-services.html">التواصل</a>
+    <a href="services.html">الخدمات</a>
+  </nav>
+</header>
+
+<div class="page">
+<h1 style="text-align:center;margin-bottom:30px" class="fade">معرض الأعمال</h1>
+<div class="grid">
+
+</div>
+</div>
+<div id="lb" class="lightbox" onclick="closeLightbox()">
+ <img id="lb-img" src="">
+</div>
+</body>
+</html>

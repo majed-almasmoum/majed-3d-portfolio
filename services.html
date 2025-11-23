@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الخدمات</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0d0f1a;font-family:'Cairo',sans-serif;color:white;}
+.global-header{
+ width:100%;padding:14px 40px;background:rgba(10,10,18,0.65);
+ backdrop-filter:blur(10px);display:flex;justify-content:space-between;
+ align-items:center;position:sticky;top:0;z-index:99;
+ border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.global-header img{height:60px;}
+.global-header nav a{
+ color:white;text-decoration:none;margin-left:22px;
+ font-size:17px;font-weight:600;opacity:.85;transition:.2s;
+}
+.global-header nav a:hover{opacity:1}
+.fade{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fade.show{opacity:1;transform:none}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")})
+ })
+ document.querySelectorAll(".fade").forEach(el=>obs.observe(el))
+})
+</script>
+
+<style>
+.page{max-width:900px;margin:50px auto;padding:20px}
+.box{background:#11131f;padding:20px;border-radius:16px;margin-bottom:20px;box-shadow:0 0 8px #0006}
+h2{margin-top:0}
+.btn{display:inline-block;background:#f5c750;color:#111;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="global-header">
+  <img src="logo.PNG" alt="Logo">
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="works.html">الأعمال</a>
+    <a href="contact-services.html">التواصل</a>
+    <a href="services.html">الخدمات</a>
+  </nav>
+</header>
+
+<div class="page">
+<h1 class="fade" style="text-align:center">الخدمات</h1>
+
+<div class="box fade">
+<h2>طباعة ثلاثية الأبعاد</h2>
+<p>تنفيذ المجسمات بجودة عالية وتشطيب احترافي.</p>
+</div>
+
+<div class="box fade">
+<h2>الخامات المتوفرة</h2>
+<p>PLA – PLA+ – PETG – TPU</p>
+</div>
+
+<div class="box fade">
+<h2>التسعير</h2>
+<p>حسب حجم النموذج، زمن الطباعة، الخامة المطلوبة، والتشطيب.</p>
+</div>
+
+<div class="box fade">
+<h2>اطلب خدمتك الآن</h2>
+<a class="btn" href="https://wa.me/966568866602">راسلني على واتساب</a>
+</div>
+
+</div>
+</body>
+</html>
