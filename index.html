@@ -233,6 +233,30 @@
       color: var(--text-muted);
       margin-top: 4px;
     }
+.big-btn{
+    display:inline-block;
+    background:#1a1d2b;
+    color:#fff;
+    padding:14px 28px;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:600;
+    text-decoration:none;
+    margin-top:10px;
+    transition:.3s ease;
+    animation:pulse 2s infinite;
+}
+
+.big-btn:hover{
+    transform:scale(1.08);
+    background:#24283b;
+}
+
+@keyframes pulse {
+    0% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
+    50% { transform:scale(1.05); box-shadow:0 0 18px #ffffff15; }
+    100% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
+}
 
     .btn {
       border-radius: 999px;
@@ -352,7 +376,10 @@
       </div>
     </section>
 
-          <div class="work-meta">لفتح معرض الصور الرجاء الضغط هنا  <a href="works.html" class="nav-icon" title="الأعمال">🖼️</a> </div>
+          <div class="work-meta">
+    لفتح معرض الصور الرجاء الضغط هنا  
+    <a href="works.html" class="big-btn" title="الأعمال">🖼️ معرض الأعمال</a>
+</div>
         </figcaption>
       </figure>
       
