@@ -23,31 +23,32 @@ body{
   align-items:center;
 }
 
-/* 📌 الصفحة تقريبًا بدون هامش */
+/* 📌 الصفحة بهوامش مناسبة (يمين + يسار) */
 .page{
-  max-width:1400px;
-  margin:10px auto;
-  padding:5px 8px;
+  max-width:1450px;
+  margin:20px auto;
+  padding:0 12px; /* هامش مثالي لليمين واليسار */
   text-align:center;
 }
 
-/* 📌 شبكة احترافية — ملتصقة بالجدار */
+/* 📌 شبكة الصور — 5 صور */
 .grid{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
-  gap:10px; /* صغير جدًا */
-  padding:0;
+  gap:14px; /* مسافة جيدة بدون لصق */
+  margin-top:10px;
 }
 
-/* الجوال → 4 صور */
+/* 📌 الجوال — 4 صور */
 @media(max-width:600px){
   .grid{
     grid-template-columns:repeat(4, 1fr);
-    gap:6px;
+    gap:8px;
+    padding:0 6px;
   }
 }
 
-/* 📌 تحسين الكارد بشكل قوي */
+/* 🔥 الكرت بتصميم أقوى */
 .card{
   position:relative;
   background:#13141f;
@@ -55,43 +56,35 @@ body{
   overflow:hidden;
   cursor:pointer;
   border:1px solid rgba(255,255,255,0.05);
-  transform:translateY(6px);
+  transform:translateY(10px);
   opacity:0;
-  animation:fadeUp 0.6s ease forwards;
+  animation:fadeUp .6s ease forwards;
 }
 
-/* حركة دخول الصور */
+/* حركة دخول */
 @keyframes fadeUp{
-  0%{
-    opacity:0;
-    transform:translateY(15px);
-  }
-  100%{
-    opacity:1;
-    transform:translateY(0);
-  }
+  0%{ opacity:0; transform:translateY(18px); }
+  100%{ opacity:1; transform:translateY(0); }
 }
 
-/* تأخير طفيف للحركة */
-.card:nth-child(odd){ animation-delay:.08s; }
-.card:nth-child(even){ animation-delay:.14s; }
+.card:nth-child(odd){ animation-delay:.05s; }
+.card:nth-child(even){ animation-delay:.12s; }
 
-/* حركة الهوفر — توهج خفيف */
+/* تكبير وتوهج عند الهوفر */
 .card:hover{
-  transform:scale(1.05);
-  box-shadow:0 8px 30px rgba(0,0,0,0.5),
-             0 0 12px rgba(255,255,255,0.08);
+  transform:scale(1.045);
+  box-shadow:0 8px 28px rgba(0,0,0,0.45),
+             0 0 10px rgba(255,255,255,0.08);
 }
 
-/* الصور */
+/* صورة داخل الكرت */
 .card img{
   width:100%;
   height:220px;
   object-fit:cover;
-  transition:.25s ease-in-out;
+  transition:.3s ease-in-out;
 }
 
-/* تكبير بسيط على الصورة عند الهوفر */
 .card:hover img{
   transform:scale(1.08);
 }
@@ -120,6 +113,7 @@ body{
 }
 
 </style>
+
 
 
 
