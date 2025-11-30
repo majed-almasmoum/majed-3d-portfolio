@@ -5,6 +5,8 @@
 <title>الأعمال</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;700&display=swap" rel="stylesheet">
 <style>
+
+/* الأساسيات */
 body{
   margin:0;
   background:#0d0f1a;
@@ -12,79 +14,113 @@ body{
   color:white;
 }
 
-/* 🔹 ترويسة الموقع */
+/* الهيدر */
 .global-header{
-  padding:16px 40px;
+  padding:14px 20px;
   background:#0b0d17;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-/* 🔹 الصفحة أصبحت بهوامش أقل */
+/* 📌 الصفحة تقريبًا بدون هامش */
 .page{
-  max-width:1300px;
-  margin:20px auto 30px; /* تقليل المسافة */
-  padding:10px 10px 30px;
+  max-width:1400px;
+  margin:10px auto;
+  padding:5px 8px;
   text-align:center;
 }
 
-/* 🔥 الشبكة — 5 كروت في الصف */
+/* 📌 شبكة احترافية — ملتصقة بالجدار */
 .grid{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
-  gap:18px; /* تقليل الفجوة */
+  gap:10px; /* صغير جدًا */
+  padding:0;
 }
 
-/* 🔥 الجوال — 4 في الصف */
-@media (max-width:600px){
+/* الجوال → 4 صور */
+@media(max-width:600px){
   .grid{
     grid-template-columns:repeat(4, 1fr);
-    gap:12px;
+    gap:6px;
   }
 }
 
-/* 🔹 الكرت */
+/* 📌 تحسين الكارد بشكل قوي */
 .card{
-  background:#11131f;
+  position:relative;
+  background:#13141f;
   border-radius:14px;
   overflow:hidden;
   cursor:pointer;
-  transition:.25s;
   border:1px solid rgba(255,255,255,0.05);
+  transform:translateY(6px);
+  opacity:0;
+  animation:fadeUp 0.6s ease forwards;
 }
 
-/* 🔹 عند المرور */
+/* حركة دخول الصور */
+@keyframes fadeUp{
+  0%{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* تأخير طفيف للحركة */
+.card:nth-child(odd){ animation-delay:.08s; }
+.card:nth-child(even){ animation-delay:.14s; }
+
+/* حركة الهوفر — توهج خفيف */
 .card:hover{
-  transform:scale(1.04);
-  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  transform:scale(1.05);
+  box-shadow:0 8px 30px rgba(0,0,0,0.5),
+             0 0 12px rgba(255,255,255,0.08);
 }
 
-/* 🔥 رفع ارتفاع الصورة — أفضل عرض */
+/* الصور */
 .card img{
   width:100%;
-  height:230px; /* كان 200 — الآن أوضح */
+  height:220px;
   object-fit:cover;
+  transition:.25s ease-in-out;
 }
 
-/* 🔹 اللايت بوكس */
+/* تكبير بسيط على الصورة عند الهوفر */
+.card:hover img{
+  transform:scale(1.08);
+}
+
+/* لايت بوكس */
 .lightbox{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:#000a;
+  inset:0;
+  background:rgba(0,0,0,0.85);
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:99;
+  z-index:90;
 }
 
 .lightbox img{
-  max-width:88%;
-  max-height:88%;
+  max-width:90%;
+  max-height:90%;
   border-radius:12px;
+  animation:imagePop .4s ease;
 }
+
+@keyframes imagePop{
+  0%{ transform:scale(0.6); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+
 </style>
+
 
 
 <script>
