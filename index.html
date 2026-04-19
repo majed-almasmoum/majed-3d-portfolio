@@ -1,568 +1,191 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>معرض أعمالي للطباعة ثلاثية الأبعاد</title>
-  <style>
-    
-    :root {
-      --bg: #050509;
-      --surface: #111119;
-      --surface-soft: #181824;
-      --accent: #f5c750;
-      --accent-soft: rgba(245, 199, 80, 0.16);
-      --text-main: #f7f7ff;
-      --text-muted: #a0a3b5;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
-    }
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3D Printed Models · ماجد المسموم</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f13;color:#f0ece4;direction:rtl}
+a{text-decoration:none;color:inherit}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Nav ── */
+nav{background:#161620;border-bottom:1px solid rgba(255,255,255,.07);padding:0 24px;position:sticky;top:0;z-index:50}
+.nav-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo img{height:38px;object-fit:contain}
+.nav-links{display:flex;gap:6px}
+.nav-links a{padding:7px 16px;border-radius:8px;font-size:14px;color:rgba(255,255,255,.55);transition:all .15s}
+.nav-links a:hover{background:rgba(255,255,255,.07);color:#f0ece4}
+.nav-links a.active{background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.25)}
 
-    
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Noto Sans Arabic", sans-serif;
-      background: radial-gradient(circle at top, #191a33 0, #050509 55%);
-      color: var(--text-main);
-      min-height: 100vh;
-    }
-    
+/* ── Hero ── */
+.hero{max-width:1000px;margin:0 auto;padding:64px 24px 48px;display:flex;align-items:center;gap:48px}
+.hero-text{flex:1}
+.hero-badge{display:inline-block;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.3);color:#fb923c;font-size:12px;padding:4px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.06em}
+.hero-title{font-size:clamp(32px,6vw,52px);font-weight:800;line-height:1.15;margin-bottom:16px}
+.hero-title span{color:#fb923c}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:480px;margin-bottom:32px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,#fb923c,#f59e0b);color:#000;padding:12px 28px;border-radius:10px;font-weight:700;font-size:14px;transition:opacity .15s}
+.btn-primary:hover{opacity:.88}
+.btn-ghost{background:rgba(255,255,255,.05);color:rgba(255,255,255,.65);padding:12px 24px;border-radius:10px;font-size:14px;border:1px solid rgba(255,255,255,.1);transition:all .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.09);color:#f0ece4}
+.hero-img{flex-shrink:0;width:220px;height:220px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#161620;display:flex;align-items:center;justify-content:center}
+.hero-img img{width:100%;height:100%;object-fit:cover}
 
-    .page {
-      max-width: 1100px;
-      margin: 24px auto 32px;
-      padding: 24px 18px 32px;
-      background: radial-gradient(circle at top left, #1b1b33 0, #080812 55%);
-      border-radius: 26px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.85);
-    }
+/* ── Stats ── */
+.stats{max-width:1000px;margin:0 auto;padding:0 24px 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat{background:#161620;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:22px 24px;transition:border-color .2s}
+.stat:hover{border-color:rgba(251,146,60,.25)}
+.stat-val{font-size:22px;font-weight:800;color:#fb923c;margin-bottom:4px}
+.stat-label{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
 
-    header {
-      background: var(--surface);
-      border-radius: 24px;
-      padding: 18px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
+/* ── Section ── */
+.section{max-width:1000px;margin:0 auto;padding:0 24px 56px}
+.section-title{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.section h2{font-size:22px;font-weight:700;margin-bottom:20px}
 
-    header::before {
-      content: "";
-      position: absolute;
-      inset: auto -80px -80px auto;
-      width: 260px;
-      height: 260px;
-      background-image: url("logo.PNG");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.05;
-      pointer-events: none;
-      transform: translateY(15%);
-    }
+/* ── Printers ── */
+.printers{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.printer{background:#161620;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px 22px;transition:all .2s}
+.printer:hover{border-color:rgba(251,146,60,.25);transform:translateY(-2px)}
+.printer-name{font-size:15px;font-weight:700;margin-bottom:6px}
+.printer-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.6}
 
-    header img {
-      width: 92px;
-      height: 92px;
-      object-fit: contain;
-      border-radius: 22px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border-subtle);
-      position: relative;
-      z-index: 1;
-    }
+/* ── About ── */
+.about-box{background:#161620;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 32px}
+.about-box p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:12px}
+.about-box p:last-child{margin-bottom:0}
 
-    .header-text { position: relative; z-index: 1; }
+/* ── Social ── */
+.social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.social-link{background:#161620;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.social-link:hover{border-color:rgba(251,146,60,.3);transform:translateY(-2px)}
+.social-icon{font-size:22px;flex-shrink:0}
+.social-info .s-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.social-info .s-handle{font-size:11px;color:rgba(255,255,255,.35)}
 
-    h1 {
-      margin-bottom: 4px;
-      font-size: 24px;
-    }
+/* ── Footer ── */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:rgba(255,255,255,.25);font-size:12px}
 
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .tagline {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .printers {
-      margin-top: 7px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .gallery-header {
-      margin-top: 18px;
-      margin-bottom: 10px;
-    }
-
-    .gallery-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .gallery-note {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    figure.item {
-      margin: 0;
-      background: var(--surface);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      border: 1px solid var(--border-subtle);
-      cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-      max-width: 260px;
-      width: 100%;
-      justify-self: center;
-    }
-
-    figure.item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
-      border-color: var(--accent-soft);
-    }
-
-    figure.item img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      background:#ccc;
-    }
-
-    figcaption {
-      padding: 8px 10px 10px;
-      font-size: 12px;
-    }
-
-    .work-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .work-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 40;
-      padding: 16px;
-    }
-
-    .lightbox.open { display: flex; }
-
-    .lightbox-inner {
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      background: var(--surface);
-      border-radius: 22px;
-      padding: 10px 12px 12px;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .lightbox-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .lightbox-main img {
-      width: 100%;
-      max-height: 70vh;
-      object-fit: contain;
-      border-radius: 14px;
-      background:#000;
-    }
-
-    .lightbox-caption {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-.big-btn{
-    display:inline-block;
-    background:#1a1d2b;
-    color:#fff;
-    padding:14px 28px;
-    border-radius:12px;
-    font-size:20px;
-    font-weight:600;
-    text-decoration:none;
-    margin-top:10px;
-    transition:.3s ease;
-    animation:pulse 2s infinite;
+@media(max-width:640px){
+.hero{flex-direction:column;padding:40px 20px 32px;gap:28px;text-align:center}
+.hero-img{width:160px;height:160px}
+.hero-sub{max-width:100%}
+.hero-btns{justify-content:center}
+.stats{grid-template-columns:1fr 1fr}
 }
-
-.big-btn:hover{
-    transform:scale(1.08);
-    background:#24283b;
-}
-
-@keyframes pulse {
-    0% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
-    50% { transform:scale(1.05); box-shadow:0 0 18px #ffffff15; }
-    100% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
-}
-
-    .btn {
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: var(--surface-soft);
-      padding: 5px 10px;
-      font-size: 11px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      border-color: rgba(0,0,0,0.2);
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 14px 12px;
-      }
-      header img {
-        width: 76px;
-        height: 76px;
-      }
-      h1 { font-size: 20px; }
-      .tagline { font-size: 12px; }
-    }
-  
-    .about {
-      margin-top: 26px;
-      background: var(--surface-soft);
-      border-radius: 18px;
-      padding: 18px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
-    }
-    .about h2 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-    .about p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 6px;
-    }
-    .full-width-container{
-    width:100%;
-    margin:30px 0;
-    text-align:center;
-}
-
-.full-btn{
-    display:block;
-    width:100%;
-    background:#1a1d2b;
-    color:#fff;
-    padding:20px 0;
-    border-radius:14px;
-    font-size:24px;
-    font-weight:700;
-    text-decoration:none;
-    transition:.3s ease;
-    animation:pulse 2s infinite;
-}
-
-.full-btn:hover{
-    transform:scale(1.02);
-    background:#24283b;
-}
-
-@keyframes pulse {
-    0% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
-    50% { transform:scale(1.02); box-shadow:0 0 20px #ffffff15; }
-    100% { transform:scale(1); box-shadow:0 0 0px #ffffff00; }
-}
-
 </style>
+
 </head>
 <body>
-  
-  <div class="page">
-    <header>
-      <img src="logo.PNG" alt="شعار الطباعة ثلاثية الأبعاد" />
-      <div class="header-text">
-        <div class="eyebrow">3D PRINTING · PLA</div>
-        <h1>3D Printed Models</h1>
-        <p class="tagline">طباعة ثلاثية الأبعاد بخامة PLA للأعمال، الشخصيات، والديكور.</p>
-        <p class="printers">
-          Anycubic Kobra 3 · Kobra 3 Max · Bambu Lab A1 · Creality K1 Max
-        </p>
-      </div>
-      <p class="bio" style="margin-top:10px;font-size:13px;color:#c0c2d8;line-height:1.8;max-width:460px;">
-        شغفي هو تحويل النماذج الرقمية إلى مجسمات واقعية بتفاصيل دقيقة عالية الجودة
-أستمتع باختيار الإعدادات والخامات المناسبة لكل مشروع للوصول إلى أفضل نتيجة ممكنة سواء كانت للعرض  للهواية أو للاستخدام اليومي
-كل قطعة أعمل عليها تمر بمرحلة اهتمام خاص، لأن هدفي دائمًا أن تبدو مثالية مثلما تخيلتها وأكثر.
-      </p>
-    <a href="gallery.html" class="nav-icon" title="الأعمال">🖼️</a>
-</header>
 
+<!-- ── Nav ── -->
 
-    <section class="highlights" style="margin:20px 0 10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
-      <div style="background:var(--surface);border-radius:16px;padding:12px 14px;border:1px solid var(--border-subtle);box-shadow:0 12px 30px rgba(0,0,0,0.55);font-size:13px;">
-        <strong>3D Printing · PLA</strong><br/>
-        شخصيات، مجسّمات، وقطع مخصّصة حسب الطلب.
-      </div>
-      <div style="background:var(--surface);border-radius:16px;padding:12px 14px;border:1px solid var(--border-subtle);box-shadow:0 12px 30px rgba(0,0,0,0.55);font-size:13px;">
-        <strong>Since 2022</strong><br/>
-        خبرة متنامية وتجارب مستمرة في تحسين جودة الطباعة.
-      </div>
-      <div style="background:var(--surface);border-radius:16px;padding:12px 14px;border:1px solid var(--border-subtle);box-shadow:0 12px 30px rgba(0,0,0,0.55);font-size:13px;">
-        <strong>Multiple Printers</strong><br/>
-        Kobra 3 · Kobra 3 Max · Bambu Lab A1 · K1 Max.
-      </div>
-    </section>
-
-    <section class="printers-grid" style="margin:18px 0 8px;background:var(--surface-soft);border-radius:18px;padding:16px 16px 14px;border:1px solid var(--border-subtle);box-shadow:0 14px 34px rgba(0,0,0,0.6);">
-      <h2 style="font-size:16px;margin-bottom:8px;">الطابعات المستخدمة</h2>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">
-        أستخدم أكثر من طابعة لضمان أفضل جودة ممكنة حسب نوع العمل وحجمه.
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:13px;color:var(--text-muted);">
-        <div style="background:var(--surface);border-radius:14px;padding:10px 12px;border:1px solid var(--border-subtle);box-shadow:0 10px 26px rgba(0,0,0,0.5);">
-          <div style="font-size:20px;margin-bottom:4px;"></div>
-          <strong>Anycubic Kobra 3</strong><br/>
-          للطباعة المتوسطة بتفاصيل واضحة وجودة ثابتة.
-        </div>
-        <div style="background:var(--surface);border-radius:14px;padding:10px 12px;border:1px solid var(--border-subtle);box-shadow:0 10px 26px rgba(0,0,0,0.5);">
-          <div style="font-size:20px;margin-bottom:4px;"></div>
-          <strong>Anycubic Kobra 3 Max</strong><br/>
-          للأعمال كبيرة الحجم التي تحتاج مساحة طباعة أوسع.
-        </div>
-        <div style="background:var(--surface);border-radius:14px;padding:10px 12px;border:1px solid var(--border-subtle);box-shadow:0 10px 26px rgba(0,0,0,0.5);">
-          <div style="font-size:20px;margin-bottom:4px;"></div>
-          <strong>Bambu Lab A1</strong><br/>
-          للطباعة السريعة مع الحفاظ على دقة عالية في التفاصيل.
-        </div>
-        <div style="background:var(--surface);border-radius:14px;padding:10px 12px;border:1px solid var(--border-subtle);box-shadow:0 10px 26px rgba(0,0,0,0.5);">
-          <div style="font-size:20px;margin-bottom:4px;"></div>
-          <strong>Creality K1 Max</strong><br/>
-          للأعمال التجريبية والقطع التي تحتاج اختبار إعدادات مختلفة.
-        </div>
-      </div>
-  <div style="
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin:40px 0;
-">
-<div style="
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-    margin:40px 0;
-">
-
-    <!-- زر معرض الأعمال -->
-    <a href="gallery.html" title="الأعمال"
-       style="
-           display:block;
-           width:100%;
-           max-width:450px;
-           background:#1a1d2b;
-           color:#fff;
-           padding:20px 0;
-           border-radius:14px;
-           font-size:24px;
-           font-weight:700;
-           text-decoration:none;
-           text-align:center;
-           transition:.3s ease;
-       ">
-        🖼️ معرض الأعمال
-    </a>
-
-    <!-- قسم التواصل -->
-    <section style="
-        background:#111119;
-        border-radius:20px;
-        padding:20px;
-        box-shadow:0 18px 45px rgba(0,0,0,0.7);
-        border:1px solid rgba(255,255,255,0.08);
-        width:95%;
-        max-width:450px;
-        text-align:center;
-    ">
-
-      <h2 style="font-size:18px;margin-bottom:10px;">التواصل والروابط</h2>
-
-      <p style="font-size:14px;color:#a0a3b5;margin-bottom:12px;">
-        يمكنكم التواصل معي مباشرة عبر الروابط التالية:
-      </p>
-
-      <ul style="
-          list-style:none;
-          padding:0;
-          margin:0;
-          line-height:1.8;
-          font-size:14px;
-          color:#d0d2e0;
-          display:flex;
-          justify-content:center;
-          gap:10px;
-          flex-wrap:wrap;
-      ">
-
-          <li>
-            <a href="https://wa.me/966568866602" target="_blank"
-               style="display:inline-flex;align-items:center;justify-content:center;
-               width:42px;height:42px;border-radius:50%;background:#25D366;color:#fff;
-               font-size:22px;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.25);">
-               💬
-            </a>
-          </li>
-
-          <li>
-            <a href="https://www.instagram.com/majed.almasmoum" target="_blank"
-               style="display:inline-flex;align-items:center;justify-content:center;
-               width:42px;height:42px;border-radius:50%;background:#E1306C;color:#fff;
-               font-size:20px;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.25);">
-               📷
-            </a>
-          </li>
-
-          <li>
-            <a href="https://www.tiktok.com/@majed.almasmoum" target="_blank"
-               style="display:inline-flex;align-items:center;justify-content:center;
-               width:42px;height:42px;border-radius:50%;background:#000;color:#fff;
-               font-size:20px;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.35);">
-               🎵
-            </a>
-          </li>
-
-          <li>
-            <a href="mailto:majed.almasmoum.m@gmail.com"
-               style="display:inline-flex;align-items:center;justify-content:center;
-               width:42px;height:42px;border-radius:50%;background:#8c1114;color:#fff;
-               font-size:20px;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,0.25);">
-               ✉️
-            </a>
-          </li>
-
-      </ul>
-
-      <p style="margin-top:10px;font-size:12px;color:#888;">
-          صفحة مخصصة للخدمات قريباً:
-          <a href="contact-services.html"
-             style="color:#6ab0ff;text-decoration:none;border-bottom:1px dashed #6ab0ff;">
-            فتح الصفحة
-          </a>
-      </p>
-
-    </section>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-    <section class="about">
-      <h2>نبذة عني · About Me</h2>
-      <p>
-       بدأت في مجال الطباعة ثلاثية الأبعاد عام 2022 كهواية بسيط 
-        وتحولت مع الوقت إلى شغف أستمتع فيه بتجربة إعدادات مختلفة وتطوير جودة عملي
-        في كل مشروع جديد.
-      </p>
-      <p>
-        أهتم بالتفاصيل، وتشطيب المجسمات، واختيار الإعدادات المناسبة لكل عمل سواء كان
-        شخصية، قطعة ديكور، أو جزء عملي للاستخدام اليومي. أحرص أن تطلع النتيجة جاهزة
-        للعرض أو للاستخدام مباشرة.
-      </p>
-      <p>
-       I started 3D printing in 2022 as a simple hobby,
-        and it quickly turned into something I am passionate about. With every new print
-        I try to improve my workflow, settings, and finishing.
-      </p>
-      <p>
-        I focus on clean layer alignment, good surface quality, and choosing the right
-        settings for each model – whether it's a character, a decorative piece, or a
-        functional part that will be used every day.
-      </p>
-    </section>
-
-
-<footer>
-      معرض أعمالي المطبوعة باستخدام الطباعه ثلاثية الأبعاد يمكن تحديثه في أي وقت بإضافة أعمال جديدة.
-    </footer>
-  </div>
-
-        </figcaption>
-      </figure>
-
-
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.PNG" alt="Logo"></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">الرئيسية</a>
+      <a href="gallery.html">الأعمال</a>
     </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">3D PRINTING · PLA · FDM</div>
+    <h1 class="hero-title">3D Printed<br><span>Models</span></h1>
+    <p class="hero-sub">شغفي هو تحويل النماذج الرقمية إلى مجسمات واقعية بتفاصيل دقيقة وجودة عالية — سواء كانت للعرض أو الاستخدام اليومي.</p>
+    <div class="hero-btns">
+      <a href="gallery.html" class="btn-primary">معرض الأعمال ←</a>
+      <a href="https://wa.me/966568866602" class="btn-ghost" target="_blank">تواصل معي</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="logo.PNG" alt="3D Portfolio Logo">
+  </div>
+</div>
+
+<!-- ── Stats ── -->
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-val">2022</div>
+    <div class="stat-label">بدأت الطباعة ثلاثية الأبعاد كهواية وتطورت لشغف</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4</div>
+    <div class="stat-label">طابعات مختلفة لأفضل جودة حسب نوع العمل</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">PLA</div>
+    <div class="stat-label">المادة الأساسية للطباعة مع تجارب متعددة</div>
+  </div>
+</div>
+
+<!-- ── Printers ── -->
+
+<div class="section">
+  <div class="section-title">الطابعات المستخدمة</div>
+  <div class="printers">
+    <div class="printer">
+      <div class="printer-name">Anycubic Kobra 3</div>
+      <div class="printer-desc">للطباعة المتوسطة بتفاصيل واضحة وجودة ثابتة</div>
+    </div>
+    <div class="printer">
+      <div class="printer-name">Anycubic Kobra 3 Max</div>
+      <div class="printer-desc">للأعمال كبيرة الحجم التي تحتاج مساحة طباعة أوسع</div>
+    </div>
+    <div class="printer">
+      <div class="printer-name">Bambu Lab A1</div>
+      <div class="printer-desc">للطباعة السريعة مع الحفاظ على دقة عالية في التفاصيل</div>
+    </div>
+    <div class="printer">
+      <div class="printer-name">Creality K1 Max</div>
+      <div class="printer-desc">للأعمال التجريبية واختبار إعدادات مختلفة</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── About ── -->
+
+<div class="section">
+  <div class="section-title">نبذة عني</div>
+  <div class="about-box">
+    <p>بدأت في مجال الطباعة ثلاثية الأبعاد عام 2022 كهواية بسيطة، وتحولت مع الوقت إلى شغف أستمتع فيه بتجربة إعدادات مختلفة وتطوير جودة عملي في كل مشروع جديد.</p>
+    <p>أهتم بالتفاصيل وتشطيب المجسمات واختيار الإعدادات المناسبة لكل عمل — سواء كان شخصية، قطعة ديكور، أو جزء عملي للاستخدام اليومي. أحرص أن تطلع النتيجة جاهزة للعرض أو للاستخدام مباشرة.</p>
+  </div>
+</div>
+
+<!-- ── Social ── -->
+
+<div class="section">
+  <div class="section-title">التواصل</div>
+  <div class="social-grid">
+    <a href="https://wa.me/966568866602" class="social-link" target="_blank">
+      <div class="social-icon">💬</div>
+      <div class="social-info"><div class="s-name">واتساب</div><div class="s-handle">تواصل مباشر</div></div>
+    </a>
+    <a href="https://www.instagram.com/majed.almasmoum" class="social-link" target="_blank">
+      <div class="social-icon">📷</div>
+      <div class="social-info"><div class="s-name">انستقرام</div><div class="s-handle">@majed.almasmoum</div></div>
+    </a>
+    <a href="https://www.tiktok.com/@majed.almasmoum" class="social-link" target="_blank">
+      <div class="social-icon">🎵</div>
+      <div class="social-info"><div class="s-name">تيكتوك</div><div class="s-handle">@majed.almasmoum</div></div>
+    </a>
+    <a href="mailto:majed.almasmoum.m@gmail.com" class="social-link">
+      <div class="social-icon">✉️</div>
+      <div class="social-info"><div class="s-name">البريد</div><div class="s-handle">majed.almasmoum.m</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>© 2025 Majed Almasmoum · 3D Printing Portfolio</footer>
 
 </body>
 </html>
