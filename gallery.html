@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
 <html lang="ar" dir="rtl">
 <head>
@@ -510,6 +510,25 @@ function setColor(btn) {
   btn.classList.add('active'); colorMethod = btn.dataset.val;
 }
 
+async function apiFetch(path, body) {
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 30000);
+    const r = await fetch(path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': adminPw },
+      body: JSON.stringify(body),
+      signal: ctrl.signal,
+    });
+    clearTimeout(t);
+    const data = await r.json();
+    if (!r.ok) return { error: data.error || `خطأ HTTP ${r.status}` };
+    return data;
+  } catch (e) {
+    return { error: e.name === 'AbortError' ? 'انتهت المهلة، حاول مجدداً' : e.message };
+  }
+}
+
 async function saveWork() {
   const name = document.getElementById('fName').value.trim();
   if (!name) { toast('أدخل اسم المجسم', 'err'); return; }
@@ -528,14 +547,14 @@ async function saveWork() {
     const ext = f.file.name.split('.').pop().toLowerCase() || 'jpg';
     const filename = `${Date.now()}_${Math.random().toString(36).slice(2,6)}.${ext}`;
     setProgress(Math.round(done/total*100), `رفع صورة ${done+1} من ${selectedFiles.length}...`);
-    const res = await apiFetch('/api/upload', { filename, content: f.base64 });
-    if (res.error) { toast('خطأ في رفع الصورة: ' + res.error, 'err'); btn.disabled=false; return; }
-    imagePaths.push(res.path);
+    const r = await apiFetch('/api/upload', { filename, content: f.base64 });
+    if (r.error) { toast('خطأ رفع الصورة: ' + r.error, 'err'); btn.disabled=false; return; }
+    imagePaths.push(r.path);
     done++;
   }
 
   // Save work
-  setProgress(Math.round(done/total*100), 'حفظ العمل...');
+  setProgress(Math.round(done/total*100), 'جاري الحفظ...');
   const work = {
     name,
     material:    document.getElementById('fMaterial').value,
@@ -545,16 +564,13 @@ async function saveWork() {
     images:      imagePaths,
   };
 
-  const res = await apiFetch('/api/save-work', { work });
-  if (res.error) { toast('خطأ في الحفظ: ' + res.error, 'err'); btn.disabled=false; return; }
+  const r = await apiFetch('/api/save-work', { work });
+  if (r.error) { toast('خطأ في الحفظ: ' + r.error, 'err'); btn.disabled=false; return; }
 
-  setProgress(100, 'تم! ⟳ قد يستغرق ظهوره دقيقة...');
-  toast(`تم إضافة "${name}" بنجاح ✓`, 'ok');
-
-  // Optimistic UI: add to local works
-  works.unshift({ ...work, id: res.id, addedAt: new Date().toISOString() });
+  setProgress(100, 'تم بنجاح ✓');
+  toast(`تم إضافة "${name}" ✓`, 'ok');
+  works.unshift({ ...work, id: r.id, addedAt: new Date().toISOString() });
   renderAll();
-
   setTimeout(() => { closeModal('addModal'); }, 1200);
 }
 
