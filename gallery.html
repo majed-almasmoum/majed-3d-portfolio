@@ -490,7 +490,7 @@ function resizeImage(file) {
       c.getContext('2d').drawImage(img, 0, 0, w, h);
       const dataUrl = c.toDataURL('image/jpeg', 0.85);
       URL.revokeObjectURL(url);
-      resolve({ base64: dataUrl.split(',')[1], dataUrl });
+      resolve({ base64: dataUrl.split(',')[1].replace(/[\r\n\s]/g, ''), dataUrl });
     };
     img.src = url;
   });
