@@ -10,7 +10,7 @@ try {
 let { filename, content } = req.body;
 if (!filename || !content) return res.status(400).json({ error: ‘filename و content مطلوبان’ });
 content  = content.replace(/[\r\n\s]/g, ‘’);
-filename = filename.replace(/[^a-zA-Z0-9.*-]/g, ’*’);
+filename = filename.replace(/[^a-zA-Z0-9._-]/g, '_');
 // Validate base64 before sending to GitHub
 if (!/^[A-Za-z0-9+/]+=*$/.test(content)) {
 return res.status(400).json({ error: `base64 invalid — length:${content.length} sample:${content.slice(0,30)}` });
